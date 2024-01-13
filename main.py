@@ -71,6 +71,13 @@ while running:
     wall_y = screen_height - wall_height // 2
     draw_wall(screen,screen_width//2,wall_y,wall_height)
 
+    # Display health bars
+    tank_one_health_bar_width = tankOne.health * 2  # Adjust for a suitable width
+    tank_two_health_bar_width = tankTwo.health * 2  # Adjust for a suitable width
+
+    pygame.draw.rect(screen, (50, 255, 50), [20, 20, tank_one_health_bar_width, 20])  # Green bar for Tank One
+    pygame.draw.rect(screen, (50, 255, 50), [screen_width - tank_two_health_bar_width - 20, 20, tank_two_health_bar_width, 20])  # Red bar for Tank Two
+
     pygame.display.flip()
     clock.tick(100)
 

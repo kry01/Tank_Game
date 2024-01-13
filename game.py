@@ -10,6 +10,7 @@ class Game:
         self.screen = pygame.display.set_mode((self.width, self.height))
         pygame.display.set_caption(title)
 
+    
     # def run(self):
     #     running = True
     #     while running:
