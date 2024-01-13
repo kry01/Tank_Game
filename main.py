@@ -13,6 +13,8 @@ tankOneX = 30
 tankTwoX = 700
 tankOneAngle = -45
 tankTwoAngle = 45
+XangleRotate = 0
+YangleRotate = 0
 fireX = 0
 fireY = 0
 
@@ -40,22 +42,26 @@ while running:
                 tankOneX += 5
             elif event.key == pygame.K_UP and tankOneAngle <= -10:
                 tankOneAngle += 5
+                XangleRotate += 5
             elif event.key == pygame.K_DOWN and tankOneAngle >= -80:
-                tankOneAngle -= 5 
+                tankOneAngle -= 5
+                XangleRotate -= 5
             elif event.key == pygame.K_q and tankTwoX >= 430:
                 tankTwoX -= 5
             elif event.key == pygame.K_d and tankTwoX < 730:
                 tankTwoX += 5
             elif event.key == pygame.K_w and tankTwoAngle <= 80:
                 tankTwoAngle += 5
+                YangleRotate += 5
             elif event.key == pygame.K_z and tankTwoAngle >= 10:
                 tankTwoAngle -= 5
+                YangleRotate -= 5
             elif event.key == pygame.K_SPACE:
                 # Check whose turn it is to fire
                 if current_tank_turn == 1:
-                    tankOne.fire(1)
+                    tankOne.fire(1, tankOneAngle)
                 else:
-                    tankTwo.fire(2)
+                    tankTwo.fire(2, tankTwoAngle)
 
                 # Switch the turn to the other tank
                 current_tank_turn = 3 - current_tank_turn  # Toggle between 1 and 2

@@ -30,7 +30,7 @@ class Tank:
         rotated_rect = rotated_barrel.get_rect(center=(barrel_x + barrel_width // 2, barrel_y + barrel_length))
         self.screen.blit(rotated_barrel, rotated_rect.topleft)
 
-    def fire(self, n):
+    def fire(self, n, angle):
         barrel_width = 5
         
         barrel_y = self.y - self.turret_length  # Adjusted to start from the barrel's head
@@ -41,12 +41,12 @@ class Tank:
             barrel_x = self.x + (self.width // 2) - (barrel_width // 2) - 45 // 2
         starting_shell_x = barrel_x + barrel_width // 2
         starting_shell_y = barrel_y
-        shell_speed = 5
+        shell_speed = 10
 
         print('Fire!')
 
             # Get the normalized direction vector of the tank's turret
-        direction_vector = pygame.Vector2(1, 0).rotate(self.barrel_angle)
+        direction_vector = pygame.Vector2(1, 0).rotate(angle)
 
         # Loop for animating the fired shells
         while (starting_shell_x < 800 and starting_shell_x > 0) and (starting_shell_y < 600 and starting_shell_y > 0):
